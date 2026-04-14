@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My AWS App</title>
-</head>
-<body>
-  <h1>Amplify Restart Works 🚀</h1>
+async function callAPI() {
+  try {
+    const response = await fetch("https://YOUR-API-ID.execute-api.eu-north-1.amazonaws.com/hello");
+    const data = await response.text();
 
-  <button onclick="callAPI()">Call Lambda API</button>
+    console.log("SUCCESS:", data);
+    document.getElementById("result").innerText = data;
 
-  <p id="result"></p>
-
-  <script>
-    async function callAPI() {
-      try {
-        const response = await fetch("https://jcyhk5unig.execute-api.eu-north-1.amazonaws.com/hello");
-        const data = await response.text();
-
-        document.getElementById("result").innerText = data;
-      } catch (error) {
-        document.getElementById("result").innerText = "Error calling API";
-      }
-    }
-  </script>
-</body>
-</html>
+  } catch (error) {
+    console.log("ERROR:", error);
+    document.getElementById("result").innerText = error;
+  }
+}
