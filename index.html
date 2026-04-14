@@ -5,5 +5,22 @@
 </head>
 <body>
   <h1>Amplify Restart Works 🚀</h1>
+
+  <button onclick="callAPI()">Call Lambda API</button>
+
+  <p id="result"></p>
+
+  <script>
+    async function callAPI() {
+      try {
+        const response = await fetch("https://YOUR-API-ID.execute-api.eu-north-1.amazonaws.com/hello");
+        const data = await response.text();
+
+        document.getElementById("result").innerText = data;
+      } catch (error) {
+        document.getElementById("result").innerText = "Error calling API";
+      }
+    }
+  </script>
 </body>
 </html>
