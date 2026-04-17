@@ -1,13 +1,26 @@
-async function callAPI() {
-  try {
-    const response = await fetch("https://YOUR-API-ID.execute-api.eu-north-1.amazonaws.com/hello");
-    const data = await response.text();
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My AWS App</title>
+</head>
+<body>
+  <h1>Amplify Restart Works 🚀</h1>
 
-    console.log("SUCCESS:", data);
-    document.getElementById("result").innerText = data;
+  <button onclick="callAPI()">Call API</button>
 
-  } catch (error) {
-    console.log("ERROR:", error);
-    document.getElementById("result").innerText = error;
-  }
-}
+  <p id="result"></p>
+
+  <script>
+    async function callAPI() {
+      try {
+        const response = await fetch("https://YOUR-API-ID.execute-api.eu-north-1.amazonaws.com/hello");
+        const data = await response.text();
+        document.getElementById("result").innerText = data;
+      } catch (error) {
+        console.log(error);
+        document.getElementById("result").innerText = "Error calling API";
+      }
+    }
+  </script>
+</body>
+</html>
